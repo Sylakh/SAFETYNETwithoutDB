@@ -11,7 +11,7 @@ import com.openclassrooms.safetynet.model.Person;
 @Component
 public class Data {
 
-	private List<FireStation> firestations;
+	public List<FireStation> firestations;
 	private List<Person> persons;
 	private List<MedicalRecord> medicalrecords;
 

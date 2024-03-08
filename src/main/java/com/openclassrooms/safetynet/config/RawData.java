@@ -9,7 +9,7 @@ import com.openclassrooms.safetynet.model.MedicalRecord;
 import com.openclassrooms.safetynet.model.Person;
 
 @Component
-public class Data {
+public class RawData {
 
 	public List<FireStation> firestations;
 	private List<Person> persons;

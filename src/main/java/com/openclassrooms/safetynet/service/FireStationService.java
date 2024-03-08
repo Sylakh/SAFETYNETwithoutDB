@@ -26,8 +26,8 @@ public class FireStationService {
 		return fireStationRepository.findAll();
 	}
 
-	public FireStation updateFireStation(String address, FireStation fireStation) {
-		return fireStationRepository.update(address, fireStation);
+	public FireStation updateFireStation(FireStation fireStation) {
+		return fireStationRepository.update(fireStation.getAddress(), fireStation);
 	}
 
 	public void deleteFireStation(String address) {

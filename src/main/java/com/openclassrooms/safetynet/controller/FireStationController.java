@@ -32,7 +32,7 @@ public class FireStationController {
 		return fireStationService.createFireStation(fireStation);
 	}
 
-	@GetMapping
+	@GetMapping("/all")
 	public Collection<FireStation> getAllFireStations() {
 		logger.info("Request GetAll on firestation begins");
 		return fireStationService.getAllFireStations();

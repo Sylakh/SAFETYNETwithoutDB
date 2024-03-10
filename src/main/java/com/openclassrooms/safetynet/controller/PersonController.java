@@ -2,10 +2,11 @@ package com.openclassrooms.safetynet.controller;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,31 +21,32 @@ import com.openclassrooms.safetynet.service.PersonService;
 @RequestMapping("/person")
 public class PersonController {
 
+	private static final Logger logger = LogManager.getLogger("PersonController");
+
 	@Autowired
 	private PersonService personService;
 
 	@PostMapping
 	public Person createPerson(@RequestBody Person person) {
+		logger.info("Request Post on person begins");
 		return personService.createPerson(person);
 	}
 
-	@GetMapping("/{firstName}/{lastName}")
-	public Person getPerson(@PathVariable String firstName, @PathVariable String lastName) {
-		return personService.getPerson(firstName, lastName);
-	}
-
-	@GetMapping
+	@GetMapping("/all")
 	public List<Person> getAllPersons() {
+		logger.info("Request Get all on person begins");
 		return personService.getAllPersons();
 	}
 
 	@PutMapping
 	public Person updatePerson(@RequestBody Person person) {
+		logger.info("Request Put on person begins");
 		return personService.updatePerson(person);
 	}
 
 	@DeleteMapping
 	public void deletePerson(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName) {
+		logger.info("Request Delete on person begins");
 		personService.deletePerson(firstName, lastName);
 	}
 }

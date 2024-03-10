@@ -2,10 +2,11 @@ package com.openclassrooms.safetynet.controller;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,26 +21,26 @@ import com.openclassrooms.safetynet.service.MedicalRecordService;
 @RequestMapping("/medicalrecord")
 public class MedicalRecordController {
 
+	private static final Logger logger = LogManager.getLogger("MedicalRecordController");
+
 	@Autowired
 	private MedicalRecordService medicalRecordService;
 
 	@PostMapping
 	public MedicalRecord createMedicalRecord(@RequestBody MedicalRecord medicalRecord) {
+		logger.info("Request Post on medicalrecord begins");
 		return medicalRecordService.createMedicalRecord(medicalRecord);
 	}
 
-	@GetMapping("/{firstName}/{lastName}")
-	public MedicalRecord getMedicalRecord(@PathVariable String firstName, @PathVariable String lastName) {
-		return medicalRecordService.getMedicalRecord(firstName, lastName);
-	}
-
-	@GetMapping
+	@GetMapping("/all")
 	public List<MedicalRecord> getAllMedicalRecords() {
+		logger.info("Request Get all on medicalrecord begins");
 		return medicalRecordService.getAllMedicalRecords();
 	}
 
 	@PutMapping
 	public MedicalRecord updateMedicalRecord(@RequestBody MedicalRecord medicalRecord) {
+		logger.info("Request Put on medicalrecord begins");
 		return medicalRecordService.updateMedicalRecord(medicalRecord.getFirstName(), medicalRecord.getLastName(),
 				medicalRecord);
 	}
@@ -47,6 +48,7 @@ public class MedicalRecordController {
 	@DeleteMapping
 	public void deleteMedicalRecord(@RequestParam("firstName") String firstName,
 			@RequestParam("lastName") String lastName) {
+		logger.info("Request Delete on medicalrecord begins");
 		medicalRecordService.deleteMedicalRecord(firstName, lastName);
 	}
 }

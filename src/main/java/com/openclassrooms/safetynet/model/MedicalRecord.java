@@ -1,6 +1,11 @@
 package com.openclassrooms.safetynet.model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.StringJoiner;
 
 public class MedicalRecord {
 
@@ -62,6 +67,46 @@ public class MedicalRecord {
 		this.birthdate = birthdate;
 		this.medications = medications;
 		this.allergies = allergies;
+	}
+
+	public Date convertStringToDate(String dateString) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		try {
+			// Convertir la chaîne en objet Date
+			Date date = dateFormat.parse(dateString);
+			return date;
+		} catch (ParseException e) {
+			// Gérer l'exception si la conversion échoue
+			throw new IllegalArgumentException("Date: " + dateString + " should be of the format : MM/dd/yyyy");
+		}
+	}
+
+	public int calculateAge(String birthDate) {
+
+		Date dateOfBirth = convertStringToDate(birthDate);
+		Calendar birthDateCal = Calendar.getInstance();
+		birthDateCal.setTime(dateOfBirth);
+
+		Calendar nowCal = Calendar.getInstance();
+
+		int age = nowCal.get(Calendar.YEAR) - birthDateCal.get(Calendar.YEAR);
+
+		// Vérifier si l'anniversaire n'a pas encore eu lieu cette année
+		if (nowCal.get(Calendar.DAY_OF_YEAR) < birthDateCal.get(Calendar.DAY_OF_YEAR)) {
+			age--;
+		}
+
+		return age;
+
+	}
+
+	public String listToString(List<String> list) {
+
+		StringJoiner joiner = new StringJoiner(", ");
+		for (String element : list) {
+			joiner.add(element);
+		}
+		return joiner.toString();
 	}
 
 }

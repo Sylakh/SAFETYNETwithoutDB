@@ -40,10 +40,20 @@ public class FireStationRepository {
 			fireStations.put(address, fireStation);
 			return fireStation;
 		}
-		return null; // Or throw an exception based on your error handling policy
+		return null;
 	}
 
 	public void delete(String address) {
 		fireStations.remove(address);
+	}
+
+	public List<String> findByStation(String station) {
+		List<String> listAddress = new ArrayList<>();
+		for (Map.Entry<String, FireStation> entry : fireStations.entrySet()) {
+			if (entry.getValue().getStation().equals(station)) {
+				listAddress.add(entry.getKey());
+			}
+		}
+		return listAddress;
 	}
 }

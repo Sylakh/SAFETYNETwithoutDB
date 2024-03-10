@@ -53,4 +53,34 @@ public class PersonRepository {
 	private static String generateKey(String firstName, String lastName) {
 		return lastName + "," + firstName;
 	}
+
+	public List<Person> findByCity(String city) {
+		List<Person> listPerson = new ArrayList<>();
+		for (Map.Entry<String, Person> entry : persons.entrySet()) {
+			if (entry.getValue().getCity().equals(city)) {
+				listPerson.add(entry.getValue());
+			}
+		}
+		return listPerson;
+	}
+
+	public List<Person> findByAddress(String address) {
+		List<Person> listPerson = new ArrayList<>();
+		for (Map.Entry<String, Person> entry : persons.entrySet()) {
+			if (entry.getValue().getAddress().equals(address)) {
+				listPerson.add(entry.getValue());
+			}
+		}
+		return listPerson;
+	}
+
+	public List<Person> findByLastName(String lastName) {
+		List<Person> listPerson = new ArrayList<>();
+		for (Map.Entry<String, Person> entry : persons.entrySet()) {
+			if (entry.getValue().getLastName().equals(lastName)) {
+				listPerson.add(entry.getValue());
+			}
+		}
+		return listPerson;
+	}
 }

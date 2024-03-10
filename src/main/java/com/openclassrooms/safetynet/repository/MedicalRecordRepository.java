@@ -19,6 +19,10 @@ public class MedicalRecordRepository {
 		initializeMedicalRecords(data.getMedicalrecords());
 	}
 
+	public MedicalRecordRepository() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public static void initializeMedicalRecords(List<MedicalRecord> medicalRecordList) {
 		if (medicalRecordList != null) {
 			for (MedicalRecord medicalRecord : medicalRecordList) {

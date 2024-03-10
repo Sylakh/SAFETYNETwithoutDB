@@ -12,7 +12,7 @@
 	<artifactId>SAFETYNETwithoutDB</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SAFETYNETwithoutDB</name>
-	<description>SAFETYNETwithoutDB project for Spring Boot without repository</description>
+	<description>SAFETYNETwithoutDB project for Spring Boot without database</description>
 	<properties>
 		<java.version>21</java.version>
 	</properties>
@@ -95,7 +95,7 @@
                             <archive>
                                 <manifest>
                                     <mainClass>
-                                        com\openclassrooms\safetynet\SafetynetApplication.java
+                                        com\openclassrooms\safetynet\SafetyneTwithoutDbApplication.java
                                     </mainClass>
                                 </manifest>
                             </archive>

@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ReaderFromFile {
 
-	private static final String FILE_PATH = "data.json";
+	private static final String FILE_PATH = ".//src//main//resources//data.json";
 
 	public static RawData readData() throws IOException {
 		ObjectMapper objectMapper = new ObjectMapper();
